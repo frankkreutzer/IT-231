@@ -1,0 +1,26 @@
+<h1>Our Products</h1>
+<table border="1">
+	<tr>
+		<th> Product Name </th>
+		<th> Product Image </th>
+		<th> Description </th>
+		<th> Category ID </th>
+		<th> Status </th>
+        <th> Purchase Price </th>
+        <th> Sales Price </th>
+        <th> Quantity-on-Hand </th>
+	</tr>
+
+<% @productlist.each do |p| %>
+	<tr>
+		<td> <%= p.productname %> </td>
+        <td> <%= image_tag p.productimage, size: "70x70" %></td>
+        <td> <%= p.description %> </td>
+        <td> <%= p.category_id %> </td>
+        <td> <%= p.status %> </td>
+        <td> <%= number_to_currency(p.purchaseprice) %> </td>
+        <td> <%= number_to_currency(p.saleprice) %> </td>
+        <td> <%= p.qtyonhand %> </td>
+	</tr>
+<% end %>
+</table>

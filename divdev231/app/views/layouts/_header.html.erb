@@ -1,0 +1,79 @@
+<table bgcolor='#E8E8E8'>
+	<tr>
+		<td width='10%' align='center'>
+		<%= link_to (image_tag 'logo.png', size: "70x70"), home_index_path%></td>
+		<td width='100%' align='center'><h1>Divergent Development</h1></td>
+
+		<td width='20%' align='center'>
+				<%= form_tag :action => 'search', :controller=>"home" do %>
+						<%= text_field_tag 'searchinput' %>
+						<%= submit_tag 'Search'%>
+				<% end %>
+		</td>
+
+		<td width='20%' align='center'>
+				<% if session[:user_id].nil? %>
+					<%= button_to "Register", new_customer_path, :method => :get %>
+				</br>
+					<%= button_to 'Login', login_path, :method => :get %>
+				<% else %>
+					Hello <%= Customer.find(session[:user_id]).firstname %>!
+					<%= button_to 'Logout', logout_path, :method => :delete %>
+				<% end %>
+		</td>
+	</tr>
+</table>
+<!--  -->
+<div id="menu">
+    <ul>
+		<li>
+            <%= link_to "Catalog", home_catalog_path %>
+        </li>
+		<li>
+			<%= link_to "My Orders", custmgmt_custprod_path %>
+		</li>
+		<li>
+			<%= link_to "About Us", home_about_path %>
+		</li>
+		<li>
+			<%= link_to "Contact us", home_contact_path %>
+		</li>
+
+
+		<% if session[:admin] == "true" %>
+		<li>
+            <%= link_to "Promotions", promotions_path %>
+        </li>
+		<li>
+			<%= link_to "Reports", reports_reports_path %>
+		</li>
+		<li>
+			<%= link_to "Customers", customers_path %>
+        </li>
+		<li>
+			<%= link_to "Products", products_path %>
+        </li>
+		<li>
+			<%= link_to "Suppliers", suppliers_path %>
+        </li>
+		<li>
+			<%= link_to "Reorder", reorders_path %>
+        </li>
+		<li>
+			<%= link_to "Categories", categories_path %>
+        </li>
+		<li>
+			<%= link_to "Orders", orders_path %>
+        </li>
+		<li>
+			<%= link_to "Order Items", order_items_path %>
+        </li>
+		<li>
+			<%= link_to "Reviews", reviews_path %>
+        </li>
+		<li>
+			<%= link_to "Subscriptions", subscriptions_path %>
+		</li>
+		<% end %>
+    </ul>
+</div>

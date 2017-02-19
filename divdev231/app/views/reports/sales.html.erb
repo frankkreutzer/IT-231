@@ -1,0 +1,16 @@
+<h1>Our Sales</h1>
+<table border="1">
+	<tr>
+		<th> Customer ID </th>
+		<th> Sale Date </th>
+		<th> Sale Notes </th>
+	</tr>
+
+<% @salelist.each do |s| %>
+	<tr>
+		<td><%= Customer.find(s.customer_id).name %></td>
+		<td> <%= s.saledate %> </td>
+		<td> <%= s.salenotes %> </td>
+	</tr>
+<% end %>
+</table>
